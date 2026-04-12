@@ -1,0 +1,23 @@
+services:
+  ncp:
+    build: .
+    image: ranklancer/ncp:latest
+    container_name: ncp
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8100:8100"
+    env_file:
+      - .env
+    read_only: true
+    tmpfs:
+      - /tmp:mode=1777,size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8100/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3

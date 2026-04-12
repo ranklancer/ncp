@@ -1,0 +1,36 @@
+server:
+  port: ${NCP_PORT:-8100}
+  host: ${NCP_HOST:-0.0.0.0}
+
+backends:
+  - id: dockge
+    url: ${DOCKGE_MCP_URL}
+    transport: streamable-http
+
+  - id: truenas
+    url: ${TRUENAS_MCP_URL}
+    transport: streamable-http
+
+  - id: npm
+    url: ${NPM_MCP_URL}
+    transport: streamable-http
+
+  - id: github
+    url: ${GITHUB_MCP_URL}
+    transport: streamable-http
+
+  - id: vaultwarden
+    url: ${VAULTWARDEN_MCP_URL}
+    transport: streamable-http
+
+  - id: homepage
+    url: ${HOMEPAGE_MCP_URL}
+    transport: streamable-http
+
+  - id: cloudflare
+    url: ${CLOUDFLARE_MCP_URL}
+    transport: streamable-http
+
+  - id: n8n
+    url: ${N8N_MCP_URL}
+    transport: streamable-http
