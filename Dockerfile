@@ -1,5 +1,5 @@
 # ── Stage 1: build ─────────────────────────────────────────────────────────────
-FROM node:22-alpine AS builder
+FROM node:26-alpine@sha256:8996bb5821d62a8fd9bb27c1cb07462f3fdce6e47d640c6a881ead0b064ce216 AS builder
 WORKDIR /app
 
 COPY package*.json ./
@@ -10,7 +10,7 @@ COPY src ./src
 RUN npm run build
 
 # ── Stage 2: runtime ───────────────────────────────────────────────────────────
-FROM node:22-alpine AS runner
+FROM node:26-alpine@sha256:8996bb5821d62a8fd9bb27c1cb07462f3fdce6e47d640c6a881ead0b064ce216 AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
